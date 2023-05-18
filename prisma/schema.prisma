@@ -7,3 +7,13 @@ datasource db {
   url = env("DATABASE_URL")
   relationMode = "prisma"
 }
+
+model Memory {
+  id     String @id @default(uuid())
+  userId String
+
+  coverUrl  String
+  content   String
+  isPublic  Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
