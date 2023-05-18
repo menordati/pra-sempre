@@ -1,9 +1,19 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/app/lib/prisma";
 import { z } from "zod";
+import { auth } from "@clerk/nextjs";
 
 export async function GET() {
+  const { userId } = auth();
+
+  if (!userId) {
+    return new Response("Unauthorized", { status: 401 });
+  }
+
   const memories = await prisma.memory.findMany({
+    where: {
+      userId,
+    },
     orderBy: {
       createdAt: "asc",
     },
@@ -21,6 +31,12 @@ export async function GET() {
 }
 
 export async function POST(request: Request) {
+  const { userId } = auth();
+
+  if (!userId) {
+    return new Response("Unauthorized", { status: 401 });
+  }
+
   const res = await request.json();
 
   const bodySchema = z.object({
@@ -36,7 +52,7 @@ export async function POST(request: Request) {
       content,
       coverUrl,
       isPublic,
-      userId: "343434",
+      userId,
     },
   });
 
