@@ -1,5 +1,6 @@
 import Image from "next/image";
 import praSempreLogo from "@/assets/pra-sempre-logo.svg";
+import Link from "next/link";
 
 export function Hero() {
   return (
@@ -14,12 +15,12 @@ export function Hero() {
           relacionamento!
         </p>
       </div>
-      <a
+      <Link
         className="inline-block rounded-full bg-pink-500 px-5 py-3 font-alt text-sm uppercase leading-none text-black hover:bg-pink-400"
-        href=""
+        href="/memories/new"
       >
         CADASTRAR LEMBRANÇA
-      </a>
+      </Link>
     </div>
   );
 }
