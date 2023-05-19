@@ -4,7 +4,7 @@ import {
   Roboto_Flex as Roboto,
   Bai_Jamjuree as BaiJamjuree,
 } from "next/font/google";
-import { ClerkProvider, SignIn, UserButton, auth } from "@clerk/nextjs";
+import { ClerkProvider, UserButton, auth } from "@clerk/nextjs";
 import { Hero } from "@/components/Hero";
 import { Copyright } from "@/components/Copyright";
 import { Register } from "@/components/Register";
