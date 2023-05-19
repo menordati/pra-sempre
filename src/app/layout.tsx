@@ -4,10 +4,10 @@ import {
   Roboto_Flex as Roboto,
   Bai_Jamjuree as BaiJamjuree,
 } from "next/font/google";
-import { ClerkProvider, UserButton, auth } from "@clerk/nextjs";
+import { ClerkProvider, SignUpButton, UserButton, auth } from "@clerk/nextjs";
 import { Hero } from "@/components/Hero";
 import { Copyright } from "@/components/Copyright";
-import { Register } from "@/components/Register";
+import { SignUp } from "@/components/SignUp";
 
 const roboto = Roboto({ subsets: ["latin"], variable: "--font-roboto" });
 
@@ -54,7 +54,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                   }}
                 />
               ) : (
-                <Register />
+                <SignUpButton mode="modal">
+                  <SignUp />
+                </SignUpButton>
               )}
               <Hero />
               <Copyright />
