@@ -1,34 +1,30 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+# PraSempre - Inspirado no NLW Spacetime da Rocketseat
 
-First, run the development server:
+O NLW Spacetime foi um evento realizado pela Rocketseat em que foi construída uma aplicação de recordação de memórias, onde o usuário adiciona à uma timeline textos, fotos e vídeos de acontecimentos marcantes da sua vida, organizados por mês e ano.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+Como participante do evento optei por me diferenciar e me desafiar ao criar uma identidade visual diferente, ainda que mínima.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Nesse contexto cheguei na aplicação PraSempre, que segue o mesmo escopo, porém o usuário armazena momentos marcantes do seu relacionamento.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+![Logo](https://pra-sempre.vercel.app/_next/static/media/pra-sempre-logo.01bb59e5.svg)
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Tecnologias 
 
-## Learn More
+Utilizei tecnologias que gostaria de aprender no evento como forma de acelerar meu aprendizado. Sendo as principais:
 
-To learn more about Next.js, take a look at the following resources:
+* Autenticação utilizando **Clerk**: ao invés de NextAuth, eliminei a necessidade de uma tabela usuário no banco de dados
+* **Planetscale**: banco de dados escalável
+* **API Routes**: ao invés de criar um back-end separado, aproveitei as funcionalidades do Next.js e criei tudo junto.
+* **AWS S3**: ao invés de armazenar as imagens localmente, utilizei o S3 da amazon para hospedá-las, utilizando base64.
+* **Vercel**: deploy :)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Preview
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+![Tela1](https://i.ibb.co/R95P2PX/tela2.jpg)
 
-## Deploy on Vercel
+LIVE: https://pra-sempre.vercel.app/
+## Créditos
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+[NLW Rocketseat](https://github.com/rocketseat-education/nlw-12-spacetime-ignite)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
