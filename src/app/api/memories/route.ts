@@ -1,10 +1,12 @@
-import { NextResponse } from "next/server";
+import { NextResponse, NextRequest } from "next/server";
 import { prisma } from "@/app/lib/prisma";
 import { z } from "zod";
 import { auth } from "@clerk/nextjs";
 
-export async function GET() {
-  const { userId } = auth();
+export async function GET(request: NextRequest) {
+  const userId = request.headers.get("x-user-id");
+
+  console.log(userId);
 
   if (!userId) {
     return new Response("Unauthorized", { status: 401 });
@@ -23,7 +25,7 @@ export async function GET() {
     return {
       id: memory.id,
       coverUrl: memory.coverUrl,
-      execerpt: memory.content.substring(0, 115).concat("..."),
+      excerpt: memory.content.substring(0, 115).concat("..."),
     };
   });
 

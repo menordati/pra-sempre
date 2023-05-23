@@ -3,11 +3,17 @@
 import { MediaPicker } from "@/components/MediaPicker";
 import { Camera } from "lucide-react";
 import { toBase64 } from "@/app/lib/toBase64";
-import { FormEvent } from "react";
+import { FormEvent, useState } from "react";
+import { useRouter } from "next/navigation";
 
 export function NewMemoryForm() {
+  const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
+
   async function handleCreateMemory(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+
+    setIsLoading(true);
 
     const formData = new FormData(event.currentTarget);
 
@@ -15,7 +21,7 @@ export function NewMemoryForm() {
 
     const base64img = await toBase64(fileToUpload);
 
-    const response = await fetch("/api/uploadFile", {
+    const uploadResponse = await fetch("/api/uploadFile", {
       method: "POST",
       body: JSON.stringify({ base64img, contentType: fileToUpload.type }),
       headers: {
@@ -23,8 +29,18 @@ export function NewMemoryForm() {
       },
     });
 
-    const { imageUrl } = await response.json();
-    console.log(imageUrl);
+    const { imageUrl } = await uploadResponse.json();
+
+    await fetch("/api/memories", {
+      method: "POST",
+      body: JSON.stringify({
+        coverUrl: imageUrl,
+        content: formData.get("content"),
+        isPublic: formData.get("isPublic"),
+      }),
+    });
+
+    router.push("/");
   }
 
   return (
@@ -63,9 +79,12 @@ export function NewMemoryForm() {
 
       <button
         type="submit"
-        className="inline-block self-end rounded-full bg-pink-500 px-5 py-3 font-alt text-sm uppercase leading-none text-black hover:bg-pink-400"
+        className={`inline-block self-end rounded-full bg-pink-500 px-5 py-3 font-alt text-sm uppercase leading-none text-black hover:bg-pink-400 ${
+          isLoading ? "cursor-not-allowed bg-gray-300 hover:bg-gray-300" : ""
+        }`}
+        disabled={isLoading}
       >
-        Salvar
+        {isLoading ? "Carregando..." : "Salvar"}
       </button>
     </form>
   );

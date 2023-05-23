@@ -25,8 +25,6 @@ export async function POST(request: NextRequest) {
     region: "sa-east-1",
   });
 
-  console.log(typeof base64img);
-
   await s3
     .putObject({
       Bucket: BUCKET_NAME || "",
@@ -39,8 +37,6 @@ export async function POST(request: NextRequest) {
       ContentType: contentType,
     })
     .promise();
-
-  console.log("bati aqui XD");
 
   return NextResponse.json({
     imageUrl: `https://${BUCKET_NAME}.s3.sa-east-1.amazonaws.com/${objectKey}`,

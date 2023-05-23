@@ -16,6 +16,7 @@
     "@types/react-dom": "18.2.4",
     "autoprefixer": "10.4.14",
     "aws-sdk": "^2.1381.0",
+    "dayjs": "^1.11.7",
     "eslint": "8.40.0",
     "eslint-config-next": "13.4.2",
     "lucide-react": "^0.219.0",

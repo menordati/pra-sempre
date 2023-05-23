@@ -25,7 +25,6 @@ export const metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   const { userId } = auth();
-  console.log(userId);
 
   return (
     <ClerkProvider>
@@ -63,7 +62,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             </div>
 
             {/* Right */}
-            <div className="flex flex-col bg-[url(../assets/bg-stars.svg)] bg-cover p-16">
+            <div className="flex flex-col bg-[url(../assets/bg-stars.svg)] bg-cover p-16 overflow-y-scroll max-h-screen">
               {children}
             </div>
           </main>
