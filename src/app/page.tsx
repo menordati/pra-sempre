@@ -12,7 +12,7 @@ interface Memory {
   createdAt: string;
 }
 
-const apiURL = process.env.VERCEL_URL || "http://localhost:3000";
+const apiURL = process.env.NEXT_PUBLIC_VERCEL_URL || "http://localhost:3000";
 
 export default async function Home() {
   const { userId } = auth();
