@@ -21,7 +21,7 @@ export default async function Home() {
     return <EmptyMemories />;
   }
 
-  const response = await fetch(`${apiURL}/api/memories`, {
+  const response = await fetch(`https://${apiURL}/api/memories`, {
     method: "GET",
     headers: {
       "X-User-ID": userId,
